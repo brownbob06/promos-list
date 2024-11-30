@@ -3,37 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Promotions</title>
+  <title>Sportsbook Promotions</title>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      background-color: #4CAF50;
+      color: white;
+      padding: 1rem;
+    }
     table {
       border-collapse: collapse;
       width: 100%;
-      margin: 20px 0;
-      font-size: 18px;
-      text-align: left;
+      margin: 20px auto;
+      background-color: white;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    thead {
+      background-color: #4CAF50;
+      color: white;
     }
     th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
     }
     th {
       cursor: pointer;
-      background-color: #f2f2f2;
     }
-    th:hover {
-      background-color: #ddd;
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    @media screen and (max-width: 600px) {
+      table {
+        font-size: 14px;
+      }
+      th, td {
+        padding: 8px;
+      }
+      th {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Sportsbook Promotions</h1>
+  <header>
+    <h1>Sportsbook Promotions</h1>
+  </header>
   <table id="promoTable">
     <thead>
       <tr>
         <th onclick="sortTable(0)">Book</th>
         <th onclick="sortTable(1)">Sport</th>
-        <th onclick="sortTable(2)">Type of Promo</th>
-        <th onclick="sortTable(3)">Minimum Odds</th>
+        <th onclick="sortTable(2)">Promo Type</th>
+        <th onclick="sortTable(3)">Min Odds</th>
         <th>Notes</th>
       </tr>
     </thead>
@@ -42,63 +74,63 @@
         <td>DraftKings</td>
         <td>College Football</td>
         <td>Barstool CFB Parlay Boost</td>
-        <td>-250 per leg</td>
+        <td>-250/leg</td>
         <td>50% profit boost, 4+ legs.</td>
       </tr>
       <tr>
         <td>DraftKings</td>
         <td>College Football</td>
-        <td>CFB Mystery Bet (Michigan vs. OSU)</td>
-        <td>-500 per leg</td>
-        <td>25%, 50%, or 105% Profit Boost, wager conditions apply.</td>
+        <td>CFB Mystery Bet (OSU vs. Mich)</td>
+        <td>-500/leg</td>
+        <td>25%, 50%, or 105% Profit Boost.</td>
       </tr>
       <tr>
         <td>DraftKings</td>
         <td>College Football</td>
         <td>Texas vs. Texas A&M Boost</td>
-        <td>-200 per leg</td>
-        <td>50% profit boost for singles or SGP.</td>
+        <td>-200/leg</td>
+        <td>50% profit boost for singles/SGP.</td>
       </tr>
       <tr>
         <td>DraftKings</td>
         <td>Basketball (NBA)</td>
         <td>NBA No Sweat Bet</td>
-        <td>-500 per leg</td>
+        <td>-500/leg</td>
         <td>3+ legs SGP or SGPx.</td>
       </tr>
       <tr>
         <td>DraftKings</td>
         <td>Basketball (CBB)</td>
         <td>CBB Profit Boost</td>
-        <td>-500 per leg</td>
+        <td>-500/leg</td>
         <td>50% profit boost, 3+ legs.</td>
       </tr>
       <tr>
         <td>DraftKings</td>
         <td>Hockey (NHL)</td>
         <td>'Goal in First Ten' Boost</td>
-        <td>-200 per leg</td>
-        <td>33% profit boost, excludes SGP, SGPx, live bets, and voided bets.</td>
+        <td>-200/leg</td>
+        <td>33% boost, excludes live/voided bets.</td>
       </tr>
       <tr>
         <td>DraftKings</td>
         <td>Football (NFL)</td>
         <td>NFL Touchdown Bonus</td>
-        <td>-500 per leg</td>
-        <td>Bonus Bet amount depends on account. Must opt-in.</td>
+        <td>-500/leg</td>
+        <td>Bonus depends on account. Opt-in req.</td>
       </tr>
       <tr>
         <td>FanDuel</td>
         <td>College Football</td>
         <td>Texas A&M Promo</td>
-        <td>-200 per leg</td>
+        <td>-200/leg</td>
         <td>Any wager accepted.</td>
       </tr>
       <tr>
         <td>FanDuel</td>
         <td>Basketball (All)</td>
         <td>3+ Leg Parlay</td>
-        <td>-400 per leg</td>
+        <td>-400/leg</td>
         <td>Max wager depends on account.</td>
       </tr>
       <tr>
@@ -106,49 +138,28 @@
         <td>Basketball (NBA)</td>
         <td>Slam Dunk Saturdays</td>
         <td>+100 combined</td>
-        <td>Bonus Bet amount depends on account. 3+ legs required.</td>
+        <td>Bonus depends on account, 3+ legs req.</td>
       </tr>
       <tr>
         <td>ESPN Bet</td>
         <td>College Football</td>
-        <td>30% Parlay/SGP Profit Boost</td>
+        <td>30% Parlay/SGP Boost</td>
         <td>+400 combined</td>
-        <td>Max wager depends on account. Opt-in required.</td>
-      </tr>
-      <tr>
-        <td>ESPN Bet</td>
-        <td>Hockey (NHL)</td>
-        <td>30% Parlay/SGP Profit Boost</td>
-        <td>+400 combined</td>
-        <td>Max wager depends on account. Opt-in required.</td>
-      </tr>
-      <tr>
-        <td>ESPN Bet</td>
-        <td>Basketball (NCAAB)</td>
-        <td>20% Parlay/SGP Profit Boost</td>
-        <td>+400 combined</td>
-        <td>Max wager depends on account. Opt-in required.</td>
+        <td>Max wager depends on account. Opt-in.</td>
       </tr>
       <tr>
         <td>ESPN Bet</td>
         <td>Basketball (NBA)</td>
-        <td>30% Parlay/SGP Profit Boost</td>
+        <td>30% Parlay/SGP Boost</td>
         <td>+400 combined</td>
-        <td>Max wager depends on account. Opt-in required.</td>
-      </tr>
-      <tr>
-        <td>ESPN Bet</td>
-        <td>Hockey (NHL)</td>
-        <td>20% SGP Profit Boost</td>
-        <td>+400 combined</td>
-        <td>Max wager depends on account. Opt-in required.</td>
+        <td>Max wager depends on account. Opt-in.</td>
       </tr>
       <tr>
         <td>ESPN Bet</td>
         <td>Soccer (EPL)</td>
-        <td>30% Parlay/SGP Profit Boost</td>
+        <td>30% Parlay/SGP Boost</td>
         <td>+400 combined</td>
-        <td>Max wager depends on account. Opt-in required.</td>
+        <td>Max wager depends on account. Opt-in.</td>
       </tr>
     </tbody>
   </table>
