@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promotions</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px 0;
+      font-size: 18px;
+      text-align: left;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      cursor: pointer;
+      background-color: #f2f2f2;
+    }
+    th:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sportsbook Promotions</h1>
+  <table id="promoTable">
+    <thead>
+      <tr>
+        <th onclick="sortTable(0)">Book</th>
+        <th onclick="sortTable(1)">Sport</th>
+        <th onclick="sortTable(2)">Type of Promo</th>
+        <th onclick="sortTable(3)">Minimum Odds</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>DraftKings</td>
+        <td>College Football</td>
+        <td>Barstool CFB Parlay Boost</td>
+        <td>-250 per leg</td>
+        <td>50% profit boost, 4+ legs.</td>
+      </tr>
+      <tr>
+        <td>DraftKings</td>
+        <td>College Football</td>
+        <td>CFB Mystery Bet (Michigan vs. OSU)</td>
+        <td>-500 per leg</td>
+        <td>25%, 50%, or 105% Profit Boost, wager conditions apply.</td>
+      </tr>
+      <tr>
+        <td>DraftKings</td>
+        <td>College Football</td>
+        <td>Texas vs. Texas A&M Boost</td>
+        <td>-200 per leg</td>
+        <td>50% profit boost for singles or SGP.</td>
+      </tr>
+      <tr>
+        <td>DraftKings</td>
+        <td>Basketball (NBA)</td>
+        <td>NBA No Sweat Bet</td>
+        <td>-500 per leg</td>
+        <td>3+ legs SGP or SGPx.</td>
+      </tr>
+      <tr>
+        <td>DraftKings</td>
+        <td>Basketball (CBB)</td>
+        <td>CBB Profit Boost</td>
+        <td>-500 per leg</td>
+        <td>50% profit boost, 3+ legs.</td>
+      </tr>
+      <tr>
+        <td>DraftKings</td>
+        <td>Hockey (NHL)</td>
+        <td>'Goal in First Ten' Boost</td>
+        <td>-200 per leg</td>
+        <td>33% profit boost, excludes SGP, SGPx, live bets, and voided bets.</td>
+      </tr>
+      <tr>
+        <td>DraftKings</td>
+        <td>Football (NFL)</td>
+        <td>NFL Touchdown Bonus</td>
+        <td>-500 per leg</td>
+        <td>Bonus Bet amount depends on account. Must opt-in.</td>
+      </tr>
+      <tr>
+        <td>FanDuel</td>
+        <td>College Football</td>
+        <td>Texas A&M Promo</td>
+        <td>-200 per leg</td>
+        <td>Any wager accepted.</td>
+      </tr>
+      <tr>
+        <td>FanDuel</td>
+        <td>Basketball (All)</td>
+        <td>3+ Leg Parlay</td>
+        <td>-400 per leg</td>
+        <td>Max wager depends on account.</td>
+      </tr>
+      <tr>
+        <td>Bet365</td>
+        <td>Basketball (NBA)</td>
+        <td>Slam Dunk Saturdays</td>
+        <td>+100 combined</td>
+        <td>Bonus Bet amount depends on account. 3+ legs required.</td>
+      </tr>
+      <tr>
+        <td>ESPN Bet</td>
+        <td>College Football</td>
+        <td>30% Parlay/SGP Profit Boost</td>
+        <td>+400 combined</td>
+        <td>Max wager depends on account. Opt-in required.</td>
+      </tr>
+      <tr>
+        <td>ESPN Bet</td>
+        <td>Hockey (NHL)</td>
+        <td>30% Parlay/SGP Profit Boost</td>
+        <td>+400 combined</td>
+        <td>Max wager depends on account. Opt-in required.</td>
+      </tr>
+      <tr>
+        <td>ESPN Bet</td>
+        <td>Basketball (NCAAB)</td>
+        <td>20% Parlay/SGP Profit Boost</td>
+        <td>+400 combined</td>
+        <td>Max wager depends on account. Opt-in required.</td>
+      </tr>
+      <tr>
+        <td>ESPN Bet</td>
+        <td>Basketball (NBA)</td>
+        <td>30% Parlay/SGP Profit Boost</td>
+        <td>+400 combined</td>
+        <td>Max wager depends on account. Opt-in required.</td>
+      </tr>
+      <tr>
+        <td>ESPN Bet</td>
+        <td>Hockey (NHL)</td>
+        <td>20% SGP Profit Boost</td>
+        <td>+400 combined</td>
+        <td>Max wager depends on account. Opt-in required.</td>
+      </tr>
+      <tr>
+        <td>ESPN Bet</td>
+        <td>Soccer (EPL)</td>
+        <td>30% Parlay/SGP Profit Boost</td>
+        <td>+400 combined</td>
+        <td>Max wager depends on account. Opt-in required.</td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+    function sortTable(n) {
+      const table = document.getElementById("promoTable");
+      let rows, switching, i, x, y, shouldSwitch, dir, switchCount = 0;
+      switching = true;
+      dir = "asc";
+      while (switching) {
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < rows.length - 1; i++) {
+          shouldSwitch = false;
+          x = rows[i].getElementsByTagName("TD")[n];
+          y = rows[i + 1].getElementsByTagName("TD")[n];
+          if (dir === "asc" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase() ||
+              dir === "desc" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            shouldSwitch = true;
+            break;
+          }
+        }
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+          switchCount++;
+        } else if (switchCount === 0 && dir === "asc") {
+          dir = "desc";
+          switching = true;
+        }
+      }
+    }
+  </script>
+</body>
+</html>
